@@ -22,14 +22,12 @@ Route::get('/', function () {
     ]);
 });
 
-//for indexing form
-Route::get('/add-new-client',[ClientController::class, 'index'])->name('add-new-client'); 
-
-//for inserting data
-Route::post('/add-new-client-store',[ClientController::class, 'store'])->name('add-new-client-store'); 
-
-// Show single data
-Route::get('/show-single-data/{id}',[ClientController::class, 'showSingleData'])->name('show-single-data'); 
+Route::get('/add-new-client',[ClientController::class, 'index'])->name('add-new-client'); //for indexing form
+Route::post('/add-new-client-store',[ClientController::class, 'store'])->name('add-new-client-store');  //for inserting data
+Route::get('/show-single-data/{id}',[ClientController::class, 'showSingleData'])->name('show-single-data');  // Show single data
+Route::get('/edit-single-data/{id}',[ClientController::class, 'editSingleData'])->name('edit-single-data');  // edit single data
+Route::post('/update-single-data/{id}',[ClientController::class, 'update'])->name(name: 'update-single-data');  // update single data
+Route::get('/delete-single-data/{id}',[ClientController::class, 'delete'])->name(name: 'delete-single-data');  // delete single data
 
 
 //for all clients

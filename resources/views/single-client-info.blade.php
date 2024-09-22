@@ -40,8 +40,8 @@
                             <i class="bi bi-three-dots-vertical"></i>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                            <li><a class="dropdown-item" href="#">Edit</a></li>
-                            <li><a class="dropdown-item" href="#">Delete</a></li>
+                            <li><a class="dropdown-item" href="{{ route('edit-single-data',  $singleClientInfo->id) }}">Edit</a></li>
+                            <li><a onclick="return confirm('Are you sure you want to delete this item?')" class="dropdown-item" href="{{ route('delete-single-data', $singleClientInfo->id) }}">Delete</a></li>
                         </ul>
                     </div>
                 </div>

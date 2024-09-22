@@ -9,6 +9,11 @@
     </nav>
 
 
+    @if (session('success'))
+         <h1 class="text-danger pb-md-3 pb-1"> {{ session('success') }} </h1>
+    @endif
+
+
     <table id="table_id" class="display" style="width: 100%">
         <thead>
             <tr>
@@ -69,8 +74,8 @@
                                 <li>
                                     <a class="dropdown-item" href="{{ route('show-single-data', $allClientsItem->id ) }}">View</a>
                                 </li>
-                                <li><a class="dropdown-item" href="#">Edit</a></li>
-                                <li><a class="dropdown-item" href="#">Delete</a></li>
+                                <li><a class="dropdown-item" href="{{ route('edit-single-data',  $allClientsItem->id) }}">Edit</a></li>
+                                <li><a onclick="return confirm('Are you sure you want to delete this item?')" class="dropdown-item" href="{{ route('delete-single-data', $allClientsItem->id) }}">Delete</a></li>
                             </ul>
                         </div>
                     </td>

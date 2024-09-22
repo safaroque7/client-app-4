@@ -54,8 +54,6 @@ class ClientController extends Controller
             $arrayService = implode(', ', $request->service);
         };
 
-
-
         //for images
         $imageName = null;
         if(isset($request->client_photo)){
@@ -104,9 +102,10 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function edit(Client $client)
+    public function editSingleData($id)
     {
-        //
+        $editSingleData = Client::findOrFail($id);
+        return view('edit-single-data', ['editSingleData' => $editSingleData]);
     }
 
     /**
@@ -116,9 +115,49 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateClientRequest $request, Client $client)
+    public function update($id, Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'client_photo' => 'nullable|mimes:jpg,jpeg,png',
+        ]);
+
+        $updateClientInfo = Client::findOrFail($id);
+
+        //for services
+        $arrayService = null;
+        if(isset($request->service)){
+            $arrayService = implode(', ', $request->service);
+        };
+
+        //for images
+        $imageName = null;
+        if(isset($request->client_photo)){
+            $imageName = time(). '.' . $request->client_photo->extension();
+            $request->client_photo->move(public_path('images'), $imageName);
+        } else {
+            $imageName = $updateClientInfo->client_photo;
+        }
+
+        $updateClientInfo->name = $request->name;
+        $updateClientInfo->phone = $request->phone;
+        $updateClientInfo->email = $request->email;
+        $updateClientInfo->gender = $request->gender;
+        $updateClientInfo->address = $request->address;
+        $updateClientInfo->facebook_review = $request->facebook_review;
+        $updateClientInfo->google_review = $request->google_review;
+        $updateClientInfo->page_number = $request->page_number;
+        $updateClientInfo->client_photo = $imageName;
+        $updateClientInfo->service = $arrayService;
+        $updateClientInfo->status = $request->status;
+        $updateClientInfo->facebook_profile_link = $request->facebook_profile_link;
+        $updateClientInfo->dob = $request->dob;
+
+        $updateClientInfo->save();
+
+        return redirect()->back()->with('success', 'Your data has been updated successfully.');
     }
 
     /**
@@ -127,8 +166,14 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Client $client)
+    public function delete($id)
     {
-        //
+        $deleteClientInfo = Client::findOrFail($id);
+        $deleteClientInfo->delete();
+
+        // return redirect()->back()->with('success', 'Your data has been deleted successfully.');
+
+
+        return redirect('/all-clients')->with('success', 'Your client information has been deleted successfully');
     }
 }
