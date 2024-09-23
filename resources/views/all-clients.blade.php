@@ -10,22 +10,21 @@
 
 
     @if (session('success'))
-         <h1 class="text-danger pb-md-3 pb-1"> {{ session('success') }} </h1>
+        <h1 class="text-danger pb-md-3 pb-1"> {{ session('success') }} </h1>
     @endif
 
 
-    <table id="table_id" class="display" style="width: 100%">
+    <table id="table_id" class="display table table-striped" style="width: 100%">
+
         <thead>
             <tr>
                 <th>#</th>
+                <th>Photo</th>
                 <th>Name</th>
                 <th>Phone</th>
                 <th>Email</th>
-                <th>Gender</th>
-                <th>Address</th>
                 <th>FB Review</th>
                 <th>Google Review</th>
-                <th>Services</th>
                 <th>Page No.</th>
                 <th>Action</th>
             </tr>
@@ -35,35 +34,33 @@
             @foreach ($allClientsCollection as $allClientsItem)
                 <tr>
                     <td> {{ $allClientsItem->id }} </td>
-                    <td class="d-flex justify-content-between client-photo">
+                    <td class="client-photo">
                         <img src="/images/{{ $allClientsItem->client_photo }}" alt="{{ $allClientsItem->name }}"
-                            class="rounded-circle me-md-2 me-1 img-fluid" onerror="this.onerror=null;this.src='https://picsum.photos/id/5/50/50';"/>
+                            class="rounded-circle me-md-2 me-1 img-fluid"
+                            onerror="this.onerror=null;this.src='https://picsum.photos/id/5/50/50';" />
+                    </td>
+                    <td>
                         {{ $allClientsItem->name }}
                     </td>
                     <td>{{ $allClientsItem->phone }}</td>
                     <td> {{ $allClientsItem->email }} </td>
-                    <td>
-                        @if ($allClientsItem->gender == 1) Male @else Female @endif
-                    </td>
-                    <td>
-                        {{ $allClientsItem->address }}
-                    </td>
+
                     <td>
                         @if ($allClientsItem->facebook_review == 1)
                             Yes
                         @else
-                            No
+                            <span class="text-danger fw-bold"> No </span>
                         @endif
                     </td>
                     <td>
                         @if ($allClientsItem->google_review == 1)
                             Yes
                         @else
-                            No
+                            <span class="text-danger fw-bold"> No </span>
                         @endif
                     </td>
-                    <td> {{ $allClientsItem->service }} </td>
-                    <td> <a href="{{ route('show-single-data', $allClientsItem->id ) }}" class="text-dark"> {{ $allClientsItem->page_number }} </a> </td>
+                    <td> <a href="{{ route('show-single-data', $allClientsItem->id) }}" class="text-dark">
+                            {{ $allClientsItem->page_number }} </a> </td>
                     <td>
                         <div class="dropdown">
                             <button class="btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
@@ -72,10 +69,14 @@
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <li>
-                                    <a class="dropdown-item" href="{{ route('show-single-data', $allClientsItem->id ) }}">View</a>
+                                    <a class="dropdown-item"
+                                        href="{{ route('show-single-data', $allClientsItem->id) }}">View</a>
                                 </li>
-                                <li><a class="dropdown-item" href="{{ route('edit-single-data',  $allClientsItem->id) }}">Edit</a></li>
-                                <li><a onclick="return confirm('Are you sure you want to delete this item?')" class="dropdown-item" href="{{ route('delete-single-data', $allClientsItem->id) }}">Delete</a></li>
+                                <li><a class="dropdown-item"
+                                        href="{{ route('edit-single-data', $allClientsItem->id) }}">Edit</a></li>
+                                <li><a onclick="return confirm('Are you sure you want to delete this item?')"
+                                        class="dropdown-item"
+                                        href="{{ route('delete-single-data', $allClientsItem->id) }}">Delete</a></li>
                             </ul>
                         </div>
                     </td>
@@ -87,14 +88,15 @@
         <tfoot>
             <tr>
                 <th>#</th>
+                <th>Photo</th>
                 <th>Name</th>
                 <th>Phone</th>
                 <th>Email</th>
-                <th>Gender</th>
-                <th>Address</th>
+
+
                 <th>FB Review</th>
                 <th>G Review</th>
-                <th>Services</th>
+
                 <th>Page No.</th>
                 <th>Action</th>
             </tr>

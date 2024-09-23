@@ -3,6 +3,7 @@
 use App\Models\Client;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,8 @@ Route::post('/update-single-data/{id}',[ClientController::class, 'update'])->nam
 Route::get('/delete-single-data/{id}',[ClientController::class, 'delete'])->name(name: 'delete-single-data');  // delete single data
 
 
+
+
 //for all clients
 Route::get('/all-clients', function () {
     $allClientsCollection = Client::all();
@@ -37,3 +40,8 @@ Route::get('/all-clients', function () {
         'allClientsCollection' => $allClientsCollection,
     ]);
 });
+
+
+//Credit account
+Route::get('/credit-account',[AccountController::class, 'index'])->name(name: 'credit-account');  // credit-account
+Route::post('/store-credit',[AccountController::class, 'storeCredit'])->name(name: 'store-credit');  // credit-account

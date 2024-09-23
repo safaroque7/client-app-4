@@ -81,11 +81,21 @@
               >
             </li>
 
-            <li class="nav-item">
-              <a href="{{ '/add-new-client' }}" class="nav-link text-white" href="add-clients.html">
+            <li class="nav-item border-bottom">
+              <a href="{{ '/add-new-client' }}" class="nav-link text-white">
                 <i class="bi bi-person-plus-fill"></i> Add New Client
               </a>
             </li>
+            
+            
+            <li class="nav-item">
+              <a href="{{ route('credit-account') }}" class="nav-link text-white">
+                <i class="bi bi-person-plus-fill"></i> Credit Account
+              </a>
+            </li>
+
+
+
           </ul>
         </div>
 
@@ -95,6 +105,7 @@
             @yield('add-new-client')
             @yield('all-clients')
             @yield('single-client-information')
+            @yield('credit-account')
 
         </div>
       </div>
