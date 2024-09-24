@@ -101,5 +101,29 @@
             </div>
         </div>
 
+        <div class="col-md-3 col-6 mb-md-4 mb-2 text-center">
+            <div class="bg-light border border-secondary">
+                <h4 class="text-white bg-secondary py-2 rounded-top"> Total Credit </h4>
+                <h1> <a href="#" class="text-decoration-none text-dark">{{ $totalcreditAmount }} </a>
+                </h1>
+            </div>
+        </div>
+        
+        <div class="col-md-3 col-6 mb-md-4 mb-2 text-center">
+            <div class="bg-light border border-secondary">
+                <h4 class="text-white bg-secondary py-2 rounded-top"> Total Debit </h4>
+                <h1> <a href="#" class="text-decoration-none text-dark">{{ $totalDebitAmount }} </a>
+                </h1>
+            </div>
+        </div>
+        
+        <div class="col-md-3 col-6 mb-md-4 mb-2 text-center">
+            <div class="bg-light border border-secondary">
+                <h4 class="text-white  {{ $totalcreditAmount > $totalDebitAmount ? 'bg-success' : 'bg-danger' }} py-2 rounded-top"> Total Balance </h4>
+                <h1> <a href="#" class="text-decoration-none text-dark">{{ $totalcreditAmount - $totalDebitAmount }} </a>
+                </h1>
+            </div>
+        </div>
+
     </div>
 @endsection

@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('debit_accounts', function (Blueprint $table) {
             $table->id();
-            $table->string('debit_date')->required();
+            $table->string('debit_date')->nullable();
             $table->string('debit_title')->required();
-            $table->integer('debit_amout')->required();
+            $table->integer('debit_amount')->required();
             $table->timestamps();
         });
     }

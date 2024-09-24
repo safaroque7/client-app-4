@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
-            $table->string('credit_date')->required();
+            $table->string('credit_date')->nullable();
             $table->integer('credit')->required();
             $table->timestamps();
         });

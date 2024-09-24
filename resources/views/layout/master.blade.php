@@ -89,8 +89,8 @@
             
             
             <li class="nav-item">
-              <a href="{{ route('credit-account') }}" class="nav-link text-white">
-                <i class="bi bi-person-plus-fill"></i> Credit Account
+              <a href="{{ route('dabit-and-credit') }}" class="nav-link text-white">
+                <i class="bi bi-person-plus-fill"></i> Credit and Debit
               </a>
             </li>
 

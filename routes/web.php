@@ -1,6 +1,9 @@
 <?php
 
+use Carbon\Carbon;
 use App\Models\Client;
+use App\Models\Account;
+use App\Models\DebitAccount;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\AccountController;
@@ -18,8 +21,15 @@ use App\Http\Controllers\AccountController;
 
 Route::get('/', function () {
     $totalClient = Client::count();
+    $totalcreditAmount = Account::sum('credit');
+    $totalDebitAmount = DebitAccount::sum('debit_amount');
+    $currentDate = Carbon::now();
+
     return view('welcome', [
         'totalClient' => $totalClient,
+        'totalcreditAmount' => $totalcreditAmount,
+        'totalDebitAmount' => $totalDebitAmount,
+        'currentDate' => $currentDate,
     ]);
 });
 
@@ -35,7 +45,7 @@ Route::get('/delete-single-data/{id}',[ClientController::class, 'delete'])->name
 
 //for all clients
 Route::get('/all-clients', function () {
-    $allClientsCollection = Client::all();
+    $allClientsCollection = Client::all()->reverse();
     return view('all-clients', [
         'allClientsCollection' => $allClientsCollection,
     ]);
@@ -43,5 +53,8 @@ Route::get('/all-clients', function () {
 
 
 //Credit account
-Route::get('/credit-account',[AccountController::class, 'index'])->name(name: 'credit-account');  // credit-account
+Route::get('/dabit-and-credit',[AccountController::class, 'index'])->name(name: 'dabit-and-credit');  // credit-account
 Route::post('/store-credit',[AccountController::class, 'storeCredit'])->name(name: 'store-credit');  // credit-account
+
+//Debit accounce
+Route::post('/debit-store',[AccountController::class, 'debitStore'])->name(name: 'debit-store');  // credit-account
