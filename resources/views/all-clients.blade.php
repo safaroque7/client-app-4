@@ -35,9 +35,11 @@
                 <tr>
                     <td> {{ $allClientsItem->id }} </td>
                     <td class="client-photo">
-                        <img src="/images/{{ $allClientsItem->client_photo }}" alt="{{ $allClientsItem->name }}"
-                            class="rounded-circle me-md-2 me-1 img-fluid"
-                            onerror="this.onerror=null;this.src='https://picsum.photos/id/5/50/50';" />
+                        <a href="{{ route('show-single-data', $allClientsItem->id) }}">
+                            <img src="/images/{{ $allClientsItem->client_photo }}" alt="{{ $allClientsItem->name }}"
+                                class="rounded-circle me-md-2 me-1 img-fluid transiction"
+                                onerror="this.onerror=null;this.src='https://picsum.photos/id/5/50/50';" />
+                        </a>
                     </td>
                     <td>
                         {{ $allClientsItem->name }}
@@ -102,6 +104,4 @@
             </tr>
         </tfoot>
     </table>
-   
-    
 @endsection

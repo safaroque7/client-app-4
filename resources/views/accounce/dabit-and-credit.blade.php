@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="w-25">
-                            <label for="debitAmout" class="form-label text-white"> Debit Amount </label>
+                            <label for="debitAmout" class="form-label"> Debit Amount </label>
                             <input type="number" name="debit_amount" value="{{ old('debit_amount') }}"
                                 class="mb-md-2 mb-1 form-control border-@if ($errors->has('debit_amount')) {{ 'white' }} @endif"
                                 id="debitAmout" />

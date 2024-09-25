@@ -10,7 +10,7 @@ i.bi.bi-people-fill {
     padding-right: 11px;
 }
 
-.border-bottom-custom-color-1{
+.border-bottom-custom-color-1 {
     border-bottom: 1px solid #ced4da;
 }
 
@@ -19,8 +19,38 @@ i.bi.bi-people-fill {
     height: 50px;
 }
 
-.table td.fit, 
+.table td.fit,
 .table th.fit {
-   white-space: nowrap;
-   width: 1%;
+    white-space: nowrap;
+    width: 1%;
+}
+
+td.client-photo a img:hover {
+    transform: scale(1.5);
+}
+
+.transiction {
+    transition: all 0.5s ease;
+}
+
+
+.transition {
+    transition: all 0.5s ease;
+}
+
+.image-and-title-hover:hover img {
+    transform: scale(1.5);
+}
+
+.image-and-title-hover img:h4 a{
+    color: red;
+}
+
+
+div#postDropDown {
+    cursor: pointer;
+}
+
+.text-justify{
+    text-align: justify;
 }

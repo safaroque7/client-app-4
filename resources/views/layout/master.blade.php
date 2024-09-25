@@ -86,6 +86,17 @@
                 <i class="bi bi-person-plus-fill"></i> Add New Client
               </a>
             </li>
+
+            <li class="nav-item border-bottom">
+              <div class="nav-link text-white" id="postDropDown" data-bs-toggle="dropdown">
+                <i class="bi bi-person-plus-fill"></i> Post
+              </div>
+              <ul class="dropdown-menu px-2" aria-labelledby="postDropDown">
+                <li class="dropdown-item-for-hover"> <a class="text-decoration-none text-dark" href="{{ route('all-posts') }}"> All Posts </a> </li>
+                <li class="dropdown-item-for-hover"> <a class="text-decoration-none text-dark" href="{{ route('add-new-post') }}"> Add New Post </a> </li>
+                <li class="dropdown-item-for-hover"> <a class="text-decoration-none text-dark" href="{{ route('all-posts-design') }}"> All Posts Design </a> </li>
+              </ul>
+            </li>
             
             
             <li class="nav-item">
@@ -106,6 +117,9 @@
             @yield('all-clients')
             @yield('single-client-information')
             @yield('credit-account')
+            @yield('add-new-post')
+            @yield('all-posts')
+            @yield('all-post-for-design')
 
         </div>
       </div>

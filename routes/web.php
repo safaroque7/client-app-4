@@ -5,6 +5,7 @@ use App\Models\Client;
 use App\Models\Account;
 use App\Models\DebitAccount;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\AccountController;
 
@@ -58,3 +59,11 @@ Route::post('/store-credit',[AccountController::class, 'storeCredit'])->name(nam
 
 //Debit accounce
 Route::post('/debit-store',[AccountController::class, 'debitStore'])->name(name: 'debit-store');  // credit-account
+
+// Post
+Route::get('/add-new-post',[PostController::class, 'index'])->name(name: 'add-new-post');  // add-new-post
+Route::post('/store-new-post',[PostController::class, 'store'])->name(name: 'store-new-post');  // store-new-post
+Route::get('/all-posts',[PostController::class, 'show'])->name(name: 'all-posts');  // all-post
+
+Route::get('/all-posts-design',[PostController::class, 'allPostsDesign'])->name(name: 'all-posts-design');  // all-post
+Route::get('/single-post/{id}',[PostController::class, 'singlePost'])->name(name: 'single-post');  // single-post
