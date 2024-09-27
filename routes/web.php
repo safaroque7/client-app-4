@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,3 +68,6 @@ Route::get('/all-posts',[PostController::class, 'show'])->name(name: 'all-posts'
 
 Route::get('/all-posts-design',[PostController::class, 'allPostsDesign'])->name(name: 'all-posts-design');  // all-post
 Route::get('/single-post/{id}',[PostController::class, 'singlePost'])->name(name: 'single-post');  // single-post
+
+// Service
+Route::post('/service',[ServiceController::class, 'index'])->name(name: 'service');  // single-post

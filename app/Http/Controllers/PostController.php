@@ -57,7 +57,6 @@ class PostController extends Controller
     //single post design
     public function singlePost($id){
         $allPostForCollectionMore = Post::all()->reverse();
-        
 
         $singlePost = Post::findOrFail($id);
         return view('post.single-post', [

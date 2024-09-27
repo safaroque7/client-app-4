@@ -91,7 +91,10 @@ class ClientController extends Controller
      */
     public function showSingleData($id)
     {
-        $singleClientInfo = Client::findOrFail($id);
+
+        // $singleClientInfo = Client::findOrFail($idwithClientInfo
+        $singleClientInfo = Client::with('services')->findOrFail($id);
+
         return view('single-client-info', [
             'singleClientInfo' => $singleClientInfo,
         ]);

@@ -11,7 +11,7 @@
          <h1 class="text-success pb-md-3 pb-1"> {{ session('success') }} </h1>
     @endif
 
-    <form action="{{ route('add-new-client-store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('add-new-client-store', ) }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="row mb-md-3 mb-2">
